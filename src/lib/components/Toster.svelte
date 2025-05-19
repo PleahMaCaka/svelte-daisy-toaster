@@ -1,7 +1,7 @@
 <script lang="ts">
 import {
   type TosterConfig,
-  toster
+  tosterRef
 } from "$lib/stores/Toster.svelte.js"
 import type { ToastPosition } from "$lib/types/Toast.js"
 
@@ -14,8 +14,8 @@ let {
 } = $props()
 
 if (config) {
-  toster.globalConfig = {
-    ...toster.globalConfig,
+  tosterRef.globalConfig = {
+    ...tosterRef.globalConfig,
     ...config
   }
 }
@@ -26,13 +26,13 @@ if (config) {
     <div
       class={
         `toast
-          ${toster.globalConfig.position
+          ${tosterRef.globalConfig.position
             ?.map(pos => `toast-${pos}`)
             .join(" ")}`
       }
     >
-    {#each toster.toasts as props}
-      <toster.component {...props} />
+    {#each tosterRef.toasts as props}
+      <tosterRef.component {...props} />
     {/each}
     </div>
   </div>

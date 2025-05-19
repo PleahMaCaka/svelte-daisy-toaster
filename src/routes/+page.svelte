@@ -1,7 +1,12 @@
-<script lang="ts">
-import Toster from "$lib/components/Toster.svelte"
-import { toster } from "$lib/stores/Toster.svelte.js"
-import { alertType } from "$lib/types/Alert.js"
+<script lang="ts">import Toast from "$lib/components/Toast.svelte";
+import Toster from "$lib/components/Toster.svelte";
+import "$lib/stores/Toster.svelte.js";
+import { createToster } from "$lib/stores/Toster.svelte.js";
+import { alertType } from "$lib/types/Alert.js";
+import type { ComponentProps } from "svelte";
+
+type ToastProps = ComponentProps<typeof Toast>
+const toster = createToster<ToastProps>()
 </script>
 
 <Toster />
@@ -32,7 +37,7 @@ import { alertType } from "$lib/types/Alert.js"
         class={`btn btn-${type}`}
         onclick={() => {
           toster.toast({
-            text: `${type}`,
+            text: `🍞 ${type} toast!`.toUpperCase(),
             type
           })
         }}

@@ -18,8 +18,9 @@ export type SpecificToastConfig = Omit<
 // Bread = BaseToast
 export type BreadProps = ComponentProps<typeof Bread>
 
-export class Toster {
-  component: Component<ComponentProps<typeof Toast>> = Toast
+export class Toster<C extends ComponentProps<typeof Bread>> {
+  // biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
+  component: Component<C, any, any> = Toast
 
   /**
    * @description Global configuration.
@@ -43,20 +44,49 @@ export class Toster {
 
   info = (
     props: Omit<ComponentProps<typeof this.component>, "type">
-  ) => this.toast({ ...props, type: "info" })
+  ) =>
+    this.toast({
+      ...props,
+      type: "info"
+    } as unknown as ComponentProps<typeof this.component>)
 
   success = (
     props: Omit<ComponentProps<typeof this.component>, "type">
-  ) => this.toast({ ...props, type: "success" })
+  ) =>
+    this.toast({
+      ...props,
+      type: "success"
+    } as unknown as ComponentProps<typeof this.component>)
 
   warning = (
     props: Omit<ComponentProps<typeof this.component>, "type">
-  ) => this.toast({ ...props, type: "warning" })
+  ) =>
+    this.toast({
+      ...props,
+      type: "warning"
+    } as unknown as ComponentProps<typeof this.component>)
 
   error = (
     props: Omit<ComponentProps<typeof this.component>, "type">
-  ) => this.toast({ ...props, type: "error" })
+  ) =>
+    this.toast({
+      ...props,
+      type: "error"
+    } as unknown as ComponentProps<typeof this.component>)
 }
 
-export const toster = new Toster()
-export const toast = toster.toast
+// biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
+export let tosterRef: Toster<any>
+
+export const createToster = <T = ComponentProps<typeof Toast>>() => {
+  const toster = new Toster<T & ComponentProps<typeof Bread>>()
+  tosterRef = toster
+  return toster
+}
+
+// export type ToastComponent<T> = {
+//   // biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
+//   [K in keyof T]: T[K] extends Component<infer P, any, any>
+//     ? ComponentProps<T[K]> & { type: AlertType }
+//     : never
+// }[keyof T]
