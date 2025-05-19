@@ -1,4 +1,4 @@
-import type Bread from "$lib/components/Bread.svelte"
+import Bread from "$lib/components/Bread.svelte"
 import Toast from "$lib/components/Toast.svelte"
 import type { AlertType } from "$lib/types/Alert.js"
 import type { ToastPosition } from "$lib/types/Toast.js"
@@ -20,8 +20,7 @@ export type BreadProps = ComponentProps<typeof Bread>
 
 // biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
 export class Toster<C extends Record<string, any>> {
-  // biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
-  component: Component<C, any, any> = Toast
+  component: typeof Bread = Bread
 
   /**
    * @description Global configuration.
