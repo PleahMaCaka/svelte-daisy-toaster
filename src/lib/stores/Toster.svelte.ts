@@ -18,7 +18,8 @@ export type SpecificToastConfig = Omit<
 // Bread = BaseToast
 export type BreadProps = ComponentProps<typeof Bread>
 
-export class Toster<C extends ComponentProps<typeof Bread>> {
+// biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
+export class Toster<C extends Record<string, any>> {
   // biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
   component: Component<C, any, any> = Toast
 
@@ -27,60 +28,52 @@ export class Toster<C extends ComponentProps<typeof Bread>> {
    */
   globalConfig: TosterConfig = {
     position: ["top", "center"],
-    timeout: 1000,
+    timeout: 3000,
     type: null
   }
 
-  toasts: BreadProps[] = $state([])
+  toasts: C[] = $state([])
 
   /**
    * @description Show toast!
    * @param props
    */
-  toast = (props: ComponentProps<typeof this.component>) => {
+  toast = (props: C) => {
     // TODO option for replace unshift to push
-    this.toasts.unshift(props)
+    this.toasts.unshift(props as unknown as C)
   }
 
-  info = (
-    props: Omit<ComponentProps<typeof this.component>, "type">
-  ) =>
+  info = (props: Omit<C, "type">) =>
     this.toast({
       ...props,
       type: "info"
-    } as unknown as ComponentProps<typeof this.component>)
+    } as unknown as C)
 
-  success = (
-    props: Omit<ComponentProps<typeof this.component>, "type">
-  ) =>
+  success = (props: Omit<C, "type">) =>
     this.toast({
       ...props,
       type: "success"
-    } as unknown as ComponentProps<typeof this.component>)
+    } as unknown as C)
 
-  warning = (
-    props: Omit<ComponentProps<typeof this.component>, "type">
-  ) =>
+  warning = (props: Omit<C, "type">) =>
     this.toast({
       ...props,
       type: "warning"
-    } as unknown as ComponentProps<typeof this.component>)
+    } as unknown as C)
 
-  error = (
-    props: Omit<ComponentProps<typeof this.component>, "type">
-  ) =>
+  error = (props: Omit<C, "type">) =>
     this.toast({
       ...props,
       type: "error"
-    } as unknown as ComponentProps<typeof this.component>)
+    } as unknown as C)
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
-export let tosterRef: Toster<any>
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export let toster: Toster<any> = new Toster<any>()
 
-export const createToster = <T = ComponentProps<typeof Toast>>() => {
-  const toster = new Toster<T & ComponentProps<typeof Bread>>()
-  tosterRef = toster
+export const createToster = <T = ComponentProps<typeof Bread>>() => {
+  const newToster = new Toster<T & ComponentProps<typeof Bread>>()
+  toster = newToster
   return toster
 }
 
