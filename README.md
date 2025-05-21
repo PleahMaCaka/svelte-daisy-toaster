@@ -1,5 +1,7 @@
 # svelte-daisy-toster
 
+[NPM](https://www.npmjs.com/package/svelte-daisy-toster)
+
 ## Installation
 
 ```bash
