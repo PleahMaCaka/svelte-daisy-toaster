@@ -1,9 +1,8 @@
 <script lang="ts">
 import Toast from "$lib/components/Toast.svelte"
 import Toster from "$lib/components/Toster.svelte"
-import "$lib/stores/Toster.svelte.js"
-import { createToster } from "$lib/stores/Toster.svelte.js"
-import { alertType } from "$lib/types/Alert.js"
+import { createToster } from "$lib/stores/toster.svelte.js"
+import { alertType } from "$lib/types/toast.js"
 import type { ComponentProps } from "svelte"
 
 type ToastProps = ComponentProps<typeof Toast>

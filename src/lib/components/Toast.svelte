@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { BreadProps } from "$lib/stores/Toster.svelte.js"
+import type { BreadProps } from "$lib/stores/toster.svelte.js"
 import Bread from "./Bread.svelte"
 
 let { text = "Empty!", ...props }: BreadProps & { text: string } =

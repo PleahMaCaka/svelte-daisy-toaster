@@ -1,7 +1,6 @@
 import Toast from "$lib/components/Toast.svelte"
 import type { Bread } from "$lib/index.js"
-import type { AlertType } from "$lib/types/Alert.js"
-import type { ToastPosition } from "$lib/types/Toast.js"
+import type { AlertType, ToastPosition } from "$lib/types/toast.js"
 import {
   type Component,
   type ComponentProps,
