@@ -1,9 +1,12 @@
 <script lang="ts">
 import {
-  type TosterConfig,
-  toster
+  Toster,
+  type TosterConfig
 } from "$lib/stores/Toster.svelte.js"
 import type { ToastPosition } from "$lib/types/Toast.js"
+import { getContext } from "svelte"
+
+const toster = getContext<Toster>("toster")
 
 let {
   config

@@ -1,12 +1,17 @@
-import Bread from "$lib/components/Bread.svelte"
 import Toast from "$lib/components/Toast.svelte"
+import type { Bread } from "$lib/index.js"
 import type { AlertType } from "$lib/types/Alert.js"
 import type { ToastPosition } from "$lib/types/Toast.js"
-import type { Component, ComponentProps } from "svelte"
+import {
+  type Component,
+  type ComponentProps,
+  type Snippet,
+  setContext
+} from "svelte"
 
 export interface TosterConfig {
   position?: ToastPosition[]
-  timeout?: number
+  duration?: number
   type: AlertType | null
 }
 
@@ -18,67 +23,70 @@ export type SpecificToastConfig = Omit<
 // Bread = BaseToast
 export type BreadProps = ComponentProps<typeof Bread>
 
-// biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
-export class Toster<C extends Record<string, any>> {
-  component: typeof Bread = Bread
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export class Toster<P extends Record<string, any> = BreadProps> {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  component: Component<P, any, any>
+  globalConfig: TosterConfig
+  toasts: P[] = $state([])
 
-  /**
-   * @description Global configuration.
-   */
-  globalConfig: TosterConfig = {
-    position: ["top", "center"],
-    timeout: 3000,
-    type: null
+  constructor(
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    component: Component<P, any, any>,
+    config?: Partial<TosterConfig>
+  ) {
+    this.component = component
+    this.globalConfig = {
+      duration: 3000,
+      position: ["top", "center"],
+      type: null,
+      ...config
+    }
   }
-
-  toasts: C[] = $state([])
 
   /**
    * @description Show toast!
    * @param props
    */
-  toast = (props: C) => {
+  toast = (props: P) => {
     // TODO option for replace unshift to push
-    this.toasts.unshift(props as unknown as C)
+    this.toasts.unshift(props as unknown as P)
   }
 
-  info = (props: Omit<C, "type">) =>
+  info = (props: Omit<P, "type">) =>
     this.toast({
       ...props,
       type: "info"
-    } as unknown as C)
+    } as unknown as P)
 
-  success = (props: Omit<C, "type">) =>
+  success = (props: Omit<P, "type">) =>
     this.toast({
       ...props,
       type: "success"
-    } as unknown as C)
+    } as unknown as P)
 
-  warning = (props: Omit<C, "type">) =>
+  warning = (props: Omit<P, "type">) =>
     this.toast({
       ...props,
       type: "warning"
-    } as unknown as C)
+    } as unknown as P)
 
-  error = (props: Omit<C, "type">) =>
+  error = (props: Omit<P, "type">) =>
     this.toast({
       ...props,
       type: "error"
-    } as unknown as C)
+    } as unknown as P)
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export let toster: Toster<any> = new Toster<any>()
-
-export const createToster = <T = ComponentProps<typeof Bread>>() => {
-  const newToster = new Toster<T & ComponentProps<typeof Bread>>()
-  toster = newToster
+export const createToster = <
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  T extends Record<string, any> = BreadProps
+>(
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  component: Component<T, any, any>,
+  config?: Partial<TosterConfig>
+): Toster<T> => {
+  const toster = new Toster<T>(component, config)
+  setContext("toster", toster)
   return toster
 }
-
-// export type ToastComponent<T> = {
-//   // biome-ignore lint/suspicious/noExplicitAny: Cannot detect reference
-//   [K in keyof T]: T[K] extends Component<infer P, any, any>
-//     ? ComponentProps<T[K]> & { type: AlertType }
-//     : never
-// }[keyof T]

@@ -1,7 +1,9 @@
 <script lang="ts">
-import { toster } from "$lib/stores/Toster.svelte.js"
+import type { Toster } from "$lib/stores/Toster.svelte.js"
 import type { AlertType } from "$lib/types/Alert.js"
-import { type Snippet } from "svelte"
+import { type Snippet, getContext } from "svelte"
+
+const toster = getContext<Toster>("toster")
 
 let {
   type = null,
@@ -18,7 +20,7 @@ let timeoutRef = (() =>
     resolve(
       setTimeout(() => {
         toster.toasts.pop()
-      }, timeout || toster.globalConfig.timeout)
+      }, timeout || toster.globalConfig.duration)
     )
   ))()
 </script>
