@@ -1,6 +1,6 @@
 {
   "name": "svelte-daisy-toster",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run prepack",
@@ -12,6 +12,7 @@
     "format": "biome format . --fix",
     "lint": "biome lint . --write --unsafe"
   },
+  "license": "MIT",
   "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
   "sideEffects": ["**/*.css"],
   "svelte": "./dist/index.js",
