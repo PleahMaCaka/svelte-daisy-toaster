@@ -1,3 +1,20 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
+
+.toast-start,
+.toast-center,
+.toast-end,
+.toast-top,
+.toast-middle,
+.toast-bottom,
+.alert-info,
+.alert-success,
+.alert-warning,
+.alert-error,
+.btn-info,
+.btn-success,
+.btn-warning,
+.btn-error {
+  /* safelist-tailwindcss.txt alternative */
+}
