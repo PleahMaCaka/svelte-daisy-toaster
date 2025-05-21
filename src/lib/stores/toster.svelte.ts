@@ -23,7 +23,7 @@ export type SpecificToastConfig = Omit<
 export type BreadProps = ComponentProps<typeof Bread>
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export class Toster<P extends Record<string, any> = BreadProps> {
+export class TosterStore<P extends Record<string, any> = BreadProps> {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   component: Component<P, any, any>
   globalConfig: TosterConfig
@@ -84,8 +84,8 @@ export const createToster = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   component: Component<T, any, any>,
   config?: Partial<TosterConfig>
-): Toster<T> => {
-  const toster = new Toster<T>(component, config)
+): TosterStore<T> => {
+  const toster = new TosterStore<T>(component, config)
   setContext("toster", toster)
   return toster
 }
