@@ -5,9 +5,9 @@
 ## Installation
 
 ```bash
-npm -D svelte-daisy-toster
+npm install -D svelte-daisy-toster
 yarn add -D svelte-daisy-toster
-pnpm i -D svelte-daisy-toster
+pnpm install -D svelte-daisy-toster
 bun add -d svelte-daisy-toster
 ```
 
@@ -49,6 +49,7 @@ bun add -d svelte-daisy-toster
 <script lang="ts">
   import MyToast from "$lib/components/MyToast.svelte"
   import { createToster } from "svelte-daisy-toster"
+  // import { Toast } from "svelte-daisy-toster" // for default toast
   
   type MyToastProps = ComponentProps<typeof MyToast>
   const toster = createToster<MyToastProps>(MyToast, {
