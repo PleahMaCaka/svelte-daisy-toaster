@@ -12,6 +12,7 @@ export interface TosterConfig {
   position?: ToastPosition[]
   duration?: number
   type: AlertType | null
+  debug: boolean
 }
 
 export type SpecificToastConfig = Omit<
@@ -39,6 +40,7 @@ export class TosterStore<P extends Record<string, any> = BreadProps> {
       duration: 3000,
       position: ["top", "center"],
       type: null,
+      debug: false,
       ...config
     }
   }
@@ -75,6 +77,15 @@ export class TosterStore<P extends Record<string, any> = BreadProps> {
       ...props,
       type: "error"
     } as unknown as P)
+
+  debug = (props: Omit<P, "type">) => {
+    if (!import.meta.env.DEV || !this.globalConfig.debug) return
+
+    this.toast({
+      ...props,
+      type: "debug"
+    } as unknown as P)
+  }
 }
 
 export const createToster = <
