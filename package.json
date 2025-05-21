@@ -3,12 +3,12 @@
   "version": "1.0.1",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && npm run prepack",
+    "build": "vite build && bun prepack",
     "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "prepack": "svelte-kit sync && svelte-package && publint",
-    "check": "biome check && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "biome check && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "prepare": "bunx svelte-kit sync || echo ''",
+    "prepack": "bunx svelte-kit sync && bunx svelte-package && bunx publint",
+    "check": "biome check && bunx svelte-kit sync && bunx svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "biome check && bunx svelte-kit sync && bunx svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "biome format . --fix",
     "lint": "biome lint . --write --unsafe"
   },
