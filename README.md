@@ -1,6 +1,6 @@
 # svelte-daisy-toster
 
-[NPM](https://www.npmjs.com/package/svelte-daisy-toster)
+[NPM](https://www.npmjs.com/package/svelte-daisy-toster)  |  [Demo](https://pleahmacaka.github.io/svelte-daisy-toster)
 
 ## Installation
 
@@ -49,7 +49,7 @@ bun add -d svelte-daisy-toster
 <script lang="ts">
   import MyToast from "$lib/components/MyToast.svelte"
   import { createToster } from "svelte-daisy-toster"
-  // import { Toast } from "svelte-daisy-toster" // for default toast
+  // import { Toast } from "svelte-daisy-toster" // use default toast if you want
   
   type MyToastProps = ComponentProps<typeof MyToast>
   const toster = createToster<MyToastProps>(MyToast, {
@@ -58,15 +58,15 @@ bun add -d svelte-daisy-toster
     type: "info", // default alert type for toster.toast()
   })
   
-  toster.info({ text: "Toast!" /* ...add my custom props */ })
-  toster.success({ text: "Toast!" /* ...add my custom props */ })
-  toster.warning({ text: "Toast!" /* ...add my custom props */ })
-  toster.error({ text: "Toast!" /* ...add my custom props */ )}
+  toster.info({ text: "Toast!" /* ...add custom props */ })
+  toster.success({ text: "Toast!" /* ...add custom props */ })
+  toster.warning({ text: "Toast!" /* ...add custom props */ })
+  toster.error({ text: "Toast!" /* ...add custom props */ })
   // or
   toster.toast({
     text: "Toast!",
     type: "info",
-    // ...add my custom props
+    // ...add custom props
   })
 </script>
 ```
