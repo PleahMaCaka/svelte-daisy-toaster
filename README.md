@@ -1,7 +1,7 @@
 # svelte-daisy-toaster
 
-[![NPM](https://img.shields.io/npm/v/svelte-daisy-toaster)](https://www.npmjs.com/package/svelte-daisy-toaster)  
-[Demo](https://pleahmacaka.github.io/svelte-daisy-toaster)
+[![NPM](https://img.shields.io/npm/v/@svelio/daisy-toaster)](https://www.npmjs.com/package/@svelio/daisy-toaster)  
+[Demo](https://svelio.github.io/daisy-toaster)
 
 A flexible and customizable toast notification system for Svelte, built with DaisyUI.
 
@@ -12,13 +12,13 @@ A flexible and customizable toast notification system for Svelte, built with Dai
 Install with your preferred package manager:
 
 ```bash
-npm i -D svelte-daisy-toaster
+npm i -D @svelio/daisy-toaster
 # or
-yarn add -D svelte-daisy-toaster
+yarn add -D @svelio/daisy-toaster
 # or
-pnpm add -D svelte-daisy-toaster
+pnpm add -D @svelio/daisy-toaster
 # or
-bun add -d svelte-daisy-toaster
+bun add -d @svelio/daisy-toaster
 ```
 
 ---

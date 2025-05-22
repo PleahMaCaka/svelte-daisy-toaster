@@ -1,12 +1,12 @@
 {
-  "name": "svelte-daisy-toaster",
-  "version": "1.0.7",
+  "name": "daisy-toaster",
+  "version": "0.1.0",
   "author": {
     "name": "PleahMaCaka",
     "email": "pleahmacaka@gmail.com",
     "url": "https://github.com/pleahmacaka"
   },
-  "homepage": "https://github.com/pleahmacaka/svelte-daisy-toaster",
+  "homepage": "https://github.com/svelio/daisy-toaster",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && bun prepack",
