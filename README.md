@@ -1,7 +1,7 @@
-# svelte-daisy-toster
+# svelte-daisy-toaster
 
-[![NPM](https://img.shields.io/npm/v/svelte-daisy-toster)](https://www.npmjs.com/package/svelte-daisy-toster)  
-[Demo](https://pleahmacaka.github.io/svelte-daisy-toster)
+[![NPM](https://img.shields.io/npm/v/svelte-daisy-toaster)](https://www.npmjs.com/package/svelte-daisy-toaster)  
+[Demo](https://pleahmacaka.github.io/svelte-daisy-toaster)
 
 A flexible and customizable toast notification system for Svelte, built with DaisyUI.
 
@@ -12,13 +12,13 @@ A flexible and customizable toast notification system for Svelte, built with Dai
 Install with your preferred package manager:
 
 ```bash
-npm i -D svelte-daisy-toster
+npm i -D svelte-daisy-toaster
 # or
-yarn add -D svelte-daisy-toster
+yarn add -D svelte-daisy-toaster
 # or
-pnpm add -D svelte-daisy-toster
+pnpm add -D svelte-daisy-toaster
 # or
-bun add -d svelte-daisy-toster
+bun add -d svelte-daisy-toaster
 ```
 
 ---
@@ -27,25 +27,25 @@ bun add -d svelte-daisy-toster
 
 ### 1. Initialize in Root Layout
 
-Set up the toster in your root layout file (recommended: `routes/+layout.svelte`):
+Set up the toaster in your root layout file (recommended: `routes/+layout.svelte`):
 
 ```svelte
 <script lang="ts">
-  import { createToster, Toster } from "svelte-daisy-toster"
+  import { createToaster, Toaster } from "svelte-daisy-toaster"
   import MyToast from "$lib/components/MyToast.svelte"
   import type { ComponentProps } from "svelte"
   import "../app.css"
 
   let { children } = $props()
 
-  createToster<ComponentProps<typeof MyToast>>(MyToast, {
+  createToaster<ComponentProps<typeof MyToast>>(MyToast, {
     duration: 3000              // Duration in ms
     debug: true                 // Enable debug mode (don't need to add when using Vite)
     position: ["top", "center"] // Toast position
   })
 </script>
 
-<Toster />
+<Toaster />
 {@render children()}
 ```
 
@@ -57,7 +57,7 @@ Extend the default `Bread` component with your own props (for example, in `src/l
 
 ```svelte
 <script lang="ts">
-  import type { BreadProps } from "$lib/stores/Toster.svelte.js"
+  import type { BreadProps } from "$lib/stores/Toaster.svelte.js"
   import Bread from "./Bread.svelte"
 
   let {
@@ -75,19 +75,19 @@ Extend the default `Bread` component with your own props (for example, in `src/l
 
 ### 3. Show Toasts Anywhere
 
-Use the `toster` API in any Svelte component (for example, in `src/routes/**/*.svelte`):
+Use the `toaster` API in any Svelte component (for example, in `src/routes/**/*.svelte`):
 
 ```svelte
 <script lang="ts">
-  import { toster } from "svelte-daisy-toster"
+  import { toaster } from "svelte-daisy-toaster"
 
-  toster.info({ text: "Toast!" })
-  toster.success({ text: "Toast!" })
-  toster.warning({ text: "Toast!" })
-  toster.error({ text: "Toast!" })
-  toster.debug({ text: "Toast!" })
+  toaster.info({ text: "Toast!" })
+  toaster.success({ text: "Toast!" })
+  toaster.warning({ text: "Toast!" })
+  toaster.error({ text: "Toast!" })
+  toaster.debug({ text: "Toast!" })
 
-  toster.toast({
+  toaster.toast({
     text: "Toast!"
     type: "info"
     // ...add custom props
@@ -95,7 +95,7 @@ Use the `toster` API in any Svelte component (for example, in `src/routes/**/*.s
 </script>
 ```
 
-- `toster.debug()` works in Vite DEV mode or when `TosterConfig.debug` is enabled.
+- `toaster.debug()` works in Vite DEV mode or when `ToasterConfig.debug` is enabled.
 
 ---
 

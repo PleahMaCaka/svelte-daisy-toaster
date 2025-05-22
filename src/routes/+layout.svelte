@@ -1,13 +1,13 @@
 <script lang="ts">
-import { createToster, Toast, Toster } from "$lib/index.js"
+import { Toast, Toaster, createToaster } from "$lib/index.js"
 import type { ComponentProps } from "svelte"
 import "../app.css"
 
 let { children } = $props()
 
 type ToastProps = ComponentProps<typeof Toast>
-createToster<ToastProps>(Toast)
+createToaster<ToastProps>(Toast)
 </script>
 
-<Toster />
+<Toaster />
 {@render children()}

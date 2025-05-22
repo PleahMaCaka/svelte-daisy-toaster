@@ -1,18 +1,20 @@
-import type { BreadProps, TosterConfig } from "$lib/types/toast.js"
-import type { Component } from "svelte"
+import type { BreadProps, ToasterConfig } from "$lib/types/toast.js"
 import { DEV } from "esm-env"
+import type { Component } from "svelte"
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export class TosterStore<P extends Record<string, any> = BreadProps> {
+export class ToasterStore<
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  P extends Record<string, any> = BreadProps
+> {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   component: Component<P, any, any>
-  globalConfig: TosterConfig
+  globalConfig: ToasterConfig
   toasts: P[] = $state([])
 
   constructor(
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     component: Component<P, any, any>,
-    config?: Partial<TosterConfig>
+    config?: Partial<ToasterConfig>
   ) {
     this.component = component
     this.globalConfig = {
@@ -68,16 +70,16 @@ export class TosterStore<P extends Record<string, any> = BreadProps> {
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export let toster: TosterStore<any>
+export let toaster: ToasterStore<any>
 
-export const createToster = <
+export const createToaster = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   T extends Record<string, any> = BreadProps
 >(
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   component: Component<T, any, any>,
-  config?: Partial<TosterConfig>
+  config?: Partial<ToasterConfig>
 ) => {
-  toster = new TosterStore<T>(component, config)
-  return toster
+  toaster = new ToasterStore<T>(component, config)
+  return toaster
 }

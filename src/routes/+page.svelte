@@ -1,5 +1,5 @@
 <script lang="ts">
-import { toster } from "$lib/stores/toster.svelte.js"
+import { toaster } from "$lib/stores/toaster.svelte.js"
 import { alertType } from "$lib/types/toast.js"
 </script>
 
@@ -8,17 +8,17 @@ import { alertType } from "$lib/types/toast.js"
     Welcome to
     <b class="text-orange-400">svelte -</b>
     <b class="text-sky-200">daisy -</b>
-    <b class="text-gray-400">toster</b>
+    <b class="text-gray-400">toaster</b>
     !
   </h1>
 
-  <p>Create your toast using `svelte-daisy-toster` and DaisyUI!</p>
+  <p>Create your toast using `svelte-daisy-toaster` and DaisyUI!</p>
   <p>Visit
     <a
       class="text-blue-400"
-      href="https://github.com/pleahmacaka/svelte-daisy-toster"
+      href="https://github.com/pleahmacaka/svelte-daisy-toaster"
     >
-      svelte-daisy-toster
+      svelte-daisy-toaster
     </a>
     to read the documentation
   </p>
@@ -28,7 +28,7 @@ import { alertType } from "$lib/types/toast.js"
       <button
         class={`btn btn-${type}`}
         onclick={() => {
-          toster.toast({
+          toaster.toast({
             text: `This is a ${type} toast`,
             type
           })

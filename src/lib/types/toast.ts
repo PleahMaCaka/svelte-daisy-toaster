@@ -18,7 +18,7 @@ export type ToastPosition =
   | "middle"
   | "bottom"
 
-export interface TosterConfig {
+export interface ToasterConfig {
   position?: ToastPosition[]
   duration?: number
   type: AlertType | null

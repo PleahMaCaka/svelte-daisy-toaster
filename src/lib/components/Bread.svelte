@@ -1,5 +1,5 @@
 <script lang="ts">
-import { toster } from "$lib/stores/toster.svelte.js"
+import { toaster } from "$lib/stores/toaster.svelte.js"
 import type { AlertType } from "$lib/types/toast.js"
 import { type Snippet } from "svelte"
 
@@ -17,8 +17,8 @@ let timeoutRef = (() =>
   new Promise(resolve =>
     resolve(
       setTimeout(() => {
-        toster.toasts.pop()
-      }, duration || toster.globalConfig.duration)
+        toaster.toasts.pop()
+      }, duration || toaster.globalConfig.duration)
     )
   ))()
 </script>

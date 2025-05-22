@@ -1,18 +1,21 @@
 <script lang="ts">
-import { toster } from "$lib/stores/toster.svelte.js"
-import type { ToastPosition, TosterConfig } from "$lib/types/toast.js"
+import { toaster } from "$lib/stores/toaster.svelte.js"
+import type {
+  ToastPosition,
+  ToasterConfig
+} from "$lib/types/toast.js"
 
 let {
   config
 }: {
-  config?: Omit<TosterConfig, "position"> & {
+  config?: Omit<ToasterConfig, "position"> & {
     position?: ToastPosition[]
   }
 } = $props()
 
 if (config) {
-  toster.globalConfig = {
-    ...toster.globalConfig,
+  toaster.globalConfig = {
+    ...toaster.globalConfig,
     ...config
   }
 }
@@ -23,13 +26,13 @@ if (config) {
     <div
       class={
         `toast
-          ${toster.globalConfig.position
+          ${toaster.globalConfig.position
             ?.map(pos => `toast-${pos}`)
             .join(" ")}`
       }
     >
-    {#each toster.toasts as props}
-      <toster.component {...props} />
+    {#each toaster.toasts as props}
+      <toaster.component {...props} />
     {/each}
     </div>
   </div>
