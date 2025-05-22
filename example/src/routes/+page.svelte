@@ -1,10 +1,5 @@
 <script lang="ts">
-import CustomToast from "$lib/components/CustomToast.svelte"
-import type { ComponentProps } from "svelte"
-import { Toster, createToster } from "svelte-daisy-toaster"
-
-let toster = createToster<ComponentProps<typeof CustomToast>>()
-toster.component = CustomToast
+import { Toster, toster } from "svelte-daisy-toster"
 </script>
 
 <Toster />
