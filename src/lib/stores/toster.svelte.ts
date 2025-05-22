@@ -1,5 +1,6 @@
 import type { BreadProps, TosterConfig } from "$lib/types/toast.js"
 import type { Component } from "svelte"
+import { DEV } from "esm-env"
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export class TosterStore<P extends Record<string, any> = BreadProps> {
@@ -57,7 +58,7 @@ export class TosterStore<P extends Record<string, any> = BreadProps> {
     } as unknown as P)
 
   debug = (props: Omit<P, "type">) => {
-    if (!import.meta.env.DEV || !this.globalConfig.debug) return
+    if (!DEV || !this.globalConfig.debug) return
 
     this.toast({
       ...props,
@@ -67,7 +68,7 @@ export class TosterStore<P extends Record<string, any> = BreadProps> {
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export let toster: TosterStore<any> | null = null
+export let toster: TosterStore<any>
 
 export const createToster = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>

@@ -1,15 +1,7 @@
 <script lang="ts">
-import Toast from "$lib/components/Toast.svelte"
-import Toster from "$lib/components/Toster.svelte"
-import { createToster } from "$lib/stores/toster.svelte.js"
+import { toster } from "$lib/stores/toster.svelte.js"
 import { alertType } from "$lib/types/toast.js"
-import type { ComponentProps } from "svelte"
-
-type ToastProps = ComponentProps<typeof Toast>
-const toster = createToster<ToastProps>(Toast)
 </script>
-
-<Toster />
 
 <main class="size-full flex flex-col justify-center items-center py-16 px-20">
   <h1 class="text-2xl font-bold tracking-wider pb-2">
