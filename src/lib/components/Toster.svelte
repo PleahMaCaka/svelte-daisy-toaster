@@ -1,12 +1,6 @@
 <script lang="ts">
-import type {
-  TosterConfig,
-  TosterStore
-} from "$lib/stores/toster.svelte.js"
-import type { ToastPosition } from "$lib/types/toast.js"
-import { getContext } from "svelte"
-
-const toster = getContext<TosterStore>("toster")
+import { toster } from "$lib/stores/toster.svelte.js"
+import type { ToastPosition, TosterConfig } from "$lib/types/toast.js"
 
 let {
   config

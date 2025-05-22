@@ -1,3 +1,6 @@
+import type { Bread } from "$lib/index.js"
+import type { ComponentProps } from "svelte"
+
 export const alertType = [
   "info",
   "success",
@@ -14,3 +17,13 @@ export type ToastPosition =
   | "top"
   | "middle"
   | "bottom"
+
+export interface TosterConfig {
+  position?: ToastPosition[]
+  duration?: number
+  type: AlertType | null
+  debug: boolean
+}
+
+// Bread = BaseToast
+export type BreadProps = ComponentProps<typeof Bread>

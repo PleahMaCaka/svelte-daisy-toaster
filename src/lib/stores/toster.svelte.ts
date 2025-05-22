@@ -1,27 +1,5 @@
-import Toast from "$lib/components/Toast.svelte"
-import type { Bread } from "$lib/index.js"
-import type { AlertType, ToastPosition } from "$lib/types/toast.js"
-import {
-  type Component,
-  type ComponentProps,
-  type Snippet,
-  setContext
-} from "svelte"
-
-export interface TosterConfig {
-  position?: ToastPosition[]
-  duration?: number
-  type: AlertType | null
-  debug: boolean
-}
-
-export type SpecificToastConfig = Omit<
-  TosterConfig,
-  "type" | "position"
->
-
-// Bread = BaseToast
-export type BreadProps = ComponentProps<typeof Bread>
+import type { BreadProps, TosterConfig } from "$lib/types/toast.js"
+import type { Component } from "svelte"
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export class TosterStore<P extends Record<string, any> = BreadProps> {
@@ -88,6 +66,9 @@ export class TosterStore<P extends Record<string, any> = BreadProps> {
   }
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export let toster: TosterStore<any> | null = null
+
 export const createToster = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   T extends Record<string, any> = BreadProps
@@ -95,8 +76,7 @@ export const createToster = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   component: Component<T, any, any>,
   config?: Partial<TosterConfig>
-): TosterStore<T> => {
-  const toster = new TosterStore<T>(component, config)
-  setContext("toster", toster)
+) => {
+  toster = new TosterStore<T>(component, config)
   return toster
 }
