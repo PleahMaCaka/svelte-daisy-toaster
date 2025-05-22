@@ -3,9 +3,6 @@
   "workspaces": {
     "": {
       "name": "svelte-custom-toast",
-      "dependencies": {
-        "user": "^0.0.0",
-      },
       "devDependencies": {
         "@biomejs/biome": "1.9.4",
         "@iconify/svelte": "^5.0.0",
@@ -16,6 +13,7 @@
         "@tailwindcss/typography": "^0.5.15",
         "@tailwindcss/vite": "^4.0.0",
         "daisyui": "^5.0.35",
+        "esm-env": "^1.2.2",
         "gh-pages": "^6.3.0",
         "publint": "^0.3.2",
         "svelte": "^5.0.0",
@@ -443,8 +441,6 @@
     "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
 
     "universalify": ["universalify@2.0.1", "", {}, "sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw=="],
-
-    "user": ["user@0.0.0", "", {}, "sha512-eRNM5isOvr6aEFAGi1CqAkmLkYxW2NJ5ThhbD+6IJXYKM1mo7Gtxx4mQIveHz/5K3p/SVnlW9k17ETn+QAu8IQ=="],
 
     "util-deprecate": ["util-deprecate@1.0.2", "", {}, "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="],
 

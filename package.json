@@ -1,6 +1,6 @@
 {
   "name": "svelte-daisy-toster",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": {
     "name": "PleahMaCaka",
     "email": "pleahmacaka@gmail.com",
@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@iconify/svelte": "^5.0.0",
     "@sveltejs/adapter-static": "^3.0.8",
     "@sveltejs/kit": "^2.16.0",
     "@sveltejs/package": "^2.0.0",
@@ -44,6 +43,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@tailwindcss/vite": "^4.0.0",
     "daisyui": "^5.0.35",
+    "esm-env": "^1.2.2",
     "gh-pages": "^6.3.0",
     "publint": "^0.3.2",
     "svelte": "^5.0.0",
