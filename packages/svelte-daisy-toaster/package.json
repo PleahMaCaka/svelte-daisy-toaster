@@ -1,0 +1,61 @@
+{
+	"name": "svelte-daisy-toaster",
+	"version": "0.1.0",
+	"author": {
+		"name": "PleahMaCaka",
+		"email": "pleahmacaka@gmail.com",
+		"url": "https://github.com/pleahmacaka"
+	},
+	"homepage": "https://github.com/svelio/daisy-toaster",
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && bun prepack",
+		"preview": "vite preview",
+		"prepare": "bunx svelte-kit sync || echo ''",
+		"prepack": "bunx svelte-kit sync && bunx svelte-package && bunx publint",
+		"check": "biome check && bunx svelte-kit sync && bunx svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "biome check && bunx svelte-kit sync && bunx svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "biome format . --fix",
+		"lint": "biome lint . --write --unsafe",
+		"gh-pages": "bun run build && gh-pages -d build"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.1.1",
+		"@sveltejs/adapter-static": "^3.0.8",
+		"@sveltejs/kit": "^2.22.4",
+		"@sveltejs/package": "^2.3.12",
+		"@sveltejs/vite-plugin-svelte": "^5.1.0",
+		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/vite": "^4.1.11",
+		"daisyui": "^5.0.46",
+		"esm-env": "^1.2.2",
+		"gh-pages": "^6.3.0",
+		"publint": "^0.3.12",
+		"svelte": "^5.35.5",
+		"svelte-check": "^4.2.2",
+		"tailwindcss": "^4.1.11",
+		"typescript": "^5.8.3",
+		"vite": "^7.0.3"
+	}
+}
